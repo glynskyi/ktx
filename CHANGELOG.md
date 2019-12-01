@@ -1,3 +1,11 @@
+## 1.0.0
+
+* Stabilized the collections API
+
+## 0.0.3
+
+* Upgraded the SDK restrictions
+
 ## 0.0.2
 
 * Added an example for `associateBy` function
