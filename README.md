@@ -17,3 +17,14 @@ final List<User> users = [
 final Map<int, User> mappedUsers = users
     .associateBy((user) => user.id);
 ```
+
+`mapToList` returns a list containing the results of applying the given [transform] function.
+
+```Dart
+final Map<int, User> users = {
+  1: User(firstName: "Dmytro", lastName: "Glynskyi"),
+  2: User(firstName: "Vladimir", lastName: "Zelenskyi")
+};
+final List<String> userName = users
+    .mapToList((key, user) => user.firstName);
+```
