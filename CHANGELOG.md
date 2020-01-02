@@ -1,3 +1,8 @@
+## 1.0.4
+
+* Added `sortBy` function
+* Added `sortByDescending` function
+
 ## 1.0.2
 
 * Changed `mapToList` signature for convenience

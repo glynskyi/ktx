@@ -21,6 +21,40 @@ extension ktx<T> on Iterable<T> {
     }
     return destination;
   }
+
+  /// Sorts elements in the list in-place according to natural sort order of the value returned by specified [selector] function.
+  ///
+  /// The sort is _stable_. It means that equal elements preserve their order relative to each other after sorting.
+  List<T> sortBy<R extends Comparable>(R Function(T) selector) {
+    return sortTo([], _compareBy(selector));
+  }
+
+  /// Sorts elements in the list in-place descending according to natural sort order of the value returned by specified [selector] function.
+  ///
+  /// The sort is _stable_. It means that equal elements preserve their order relative to each other after sorting.
+  List<T> sortByDescending<R extends Comparable>(R Function(T) selector) {
+    return sortTo([], _compareByDescending(selector));
+  }
+
+  List<T> sortTo(List<T> destination, Comparator<T> comparator) {
+    destination.addAll(this);
+    destination.sort((left, right) => comparator(left, right));
+    return destination;
+  }
+
+  /// Creates a comparator using the function to transform value to a [Comparable] instance for comparison.
+  Comparator<T> _compareBy<R extends Comparable>(R Function(T) selector) {
+    return (T left, T right) {
+      return selector(left).compareTo(selector(right));
+    };
+  }
+
+  /// Creates a descending comparator using the function to transform value to a [Comparable] instance for comparison.
+  Comparator<T> _compareByDescending<R extends Comparable>(R Function(T) selector) {
+    return (T left, T right) {
+      return selector(right).compareTo(selector(left));
+    };
+  }
 }
 
 extension mapKtx<K, V> on Map<K, V> {

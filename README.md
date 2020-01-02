@@ -28,3 +28,14 @@ final Map<int, User> users = {
 final List<String> userName = users
     .mapToList((key, user) => user.firstName);
 ```
+
+`sortBy` sorts elements in the list in-place according to natural sort order of the value returned by specified [selector] function.
+
+```Dart
+final List<User> users = [
+    User(id: 1, firstName: "Dmytro", lastName: "Glynskyi"),
+    User(id: 2, firstName: "Vladimir", lastName: "Zelenskyi")
+];
+final List<User> sortedByNameUsers = users
+    .sortBy((user) => user.firstName);
+```

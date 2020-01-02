@@ -13,4 +13,16 @@ void main() {
     final map = numbers.mapToList((key, value) => "$key" == value);
     expect(map, [true, true, true]);
   });
+
+  test('sorts strings by length', () {
+    final alphabet = ["Xi", "Alpha", "Beta"];
+    final sortedAlphabet = alphabet.sortBy((symbol) => symbol.length);
+    expect(sortedAlphabet, ["Xi", "Beta", "Alpha"]);
+  });
+
+  test('sorts strings descending by first symbol', () {
+    final alphabet = ["Xi", "Alpha", "Beta"];
+    final sortedAlphabet = alphabet.sortByDescending((symbol) => symbol[0]);
+    expect(sortedAlphabet, ["Xi", "Beta", "Alpha"]);
+  });
 }
