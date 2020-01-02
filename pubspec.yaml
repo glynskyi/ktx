@@ -1,13 +1,11 @@
 name: ktx
 description: The KTX Library provides a comprehensive set of tools for managing collections.
-version: 1.0.0
+version: 1.0.1
 author: Dmytro Glynskyi <dmytro.glynskyi@gmail.com>
 homepage: https://github.com/glynskyi/ktx
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
-
-dependencies:
+  sdk: ">=2.7.0 <3.0.0"
 
 dev_dependencies:
   test: ^1.9.2

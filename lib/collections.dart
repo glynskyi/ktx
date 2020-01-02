@@ -22,3 +22,20 @@ extension ktx<T> on Iterable<T> {
     return destination;
   }
 }
+
+extension mapKtx<K, V> on Map<K, V> {
+  /// Returns a list containing the results of applying the given [transform] function
+  /// to each entry in the original map.
+  List<R> mapToList<R>(R Function(MapEntry<K, V>) transform) {
+    return mapToListTo([], transform);
+  }
+
+  /// Applies the given [transform] function to each entry of the original map
+  /// and appends the results to the given [destination].
+  List<R> mapToListTo<R>(List<R> destination, R Function(MapEntry<K, V>) transform) {
+    for (var item in this.entries) {
+      destination.add(transform(item));
+    }
+    return destination;
+  }
+}

@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Added `mapToList` function
+
 ## 1.0.0
 
 * Stabilized the collections API
