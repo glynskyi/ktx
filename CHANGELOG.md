@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Changed `mapToList` signature for convenience
+
 ## 1.0.1
 
 * Added `mapToList` function
