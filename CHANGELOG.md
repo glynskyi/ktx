@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Added `groupBy` function
+
 ## 1.0.4
 
 * Added `sortBy` function

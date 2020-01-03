@@ -33,9 +33,21 @@ final List<String> userName = users
 
 ```Dart
 final List<User> users = [
-    User(id: 1, firstName: "Dmytro", lastName: "Glynskyi"),
+    User(id: 1, firstName: "Vladimir", lastName: "Glynskyi"),
     User(id: 2, firstName: "Vladimir", lastName: "Zelenskyi")
 ];
 final List<User> sortedByNameUsers = users
     .sortBy((user) => user.firstName);
+```
+
+`groupBy` groups elements of the original collection by the key returned by the given [keySelector] function applied to each element 
+and returns a map where each group key is associated with a list of corresponding elements.
+
+```Dart
+final List<User> users = [
+    User(id: 1, firstName: "Vladimir", lastName: "Glynskyi"),
+    User(id: 2, firstName: "Vladimir", lastName: "Zelenskyi")
+];
+final Map<String, List<User>> groupedUsers = users
+    .groupBy((user) => user.firstName);
 ```

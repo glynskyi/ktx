@@ -55,6 +55,31 @@ extension ktx<T> on Iterable<T> {
       return selector(right).compareTo(selector(left));
     };
   }
+
+  /// Groups elements of the original collection by the key returned by the given [keySelector] function
+  /// applied to each element and returns a map where each group key is associated with a list of corresponding elements.
+  ///
+  /// The returned map preserves the entry iteration order of the keys produced from the original collection.
+  Map<K, List<T>> groupBy<K>(K Function(T) keySelector) {
+    return groupByTo({}, keySelector);
+  }
+
+  /// Groups elements of the original collection by the key returned by the given [keySelector] function
+  /// applied to each element and puts to the [destination] map each group key associated with a list of corresponding elements.
+  ///
+  /// @return The [destination] map.
+  Map<K, List<T>> groupByTo<K>(Map<K, List<T>> destination, K Function(T) keySelector) {
+    for (var element in this) {
+      final key = keySelector(element);
+      List<T> list = destination[key];
+      if (list == null) {
+        list = [];
+        destination[key] = list;
+      }
+      list.add(element);
+    }
+    return destination;
+  }
 }
 
 extension mapKtx<K, V> on Map<K, V> {
