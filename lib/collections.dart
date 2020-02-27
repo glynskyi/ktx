@@ -80,6 +80,24 @@ extension ktx<T> on Iterable<T> {
     }
     return destination;
   }
+
+  /// Returns a list containing only the non-null results of applying the given [transform] function
+  /// to each element in the original collection.
+  List<R> mapNotNull<R>(R Function(T) transform) {
+    return mapNotNullTo([], transform);
+  }
+
+  /// Applies the given [transform] function to each element in the original collection
+  /// and appends only the non-null results to the given [destination].
+  List<R> mapNotNullTo<R>(List<R> destination, R Function(T) transform) {
+    for (final item in this) {
+      final result = transform(item);
+      if (result != null) {
+        destination.add(result);
+      }
+    }
+    return destination;
+  }
 }
 
 extension mapKtx<K, V> on Map<K, V> {

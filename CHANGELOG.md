@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Added `mapNotNull` function
+
 ## 1.0.5
 
 * Added `groupBy` function

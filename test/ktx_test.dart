@@ -51,4 +51,10 @@ void main() {
       "Vladimir": [_User("Vladimir", "Glynskyi"), _User("Vladimir", "Zelenskyi")]
     });
   });
+
+  test('maps with nullable elements', () {
+    final List<_User> users = [_User("Vladimir", "Glynskyi"), _User("Vladimir", "Zelenskyi")];
+    final mappedUsers = users.mapNotNull((user) => user.lastName.startsWith("G") ? user : null);
+    expect(mappedUsers, [_User("Vladimir", "Glynskyi")]);
+  });
 }
