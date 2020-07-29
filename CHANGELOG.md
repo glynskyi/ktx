@@ -1,3 +1,8 @@
+## 1.0.7
+
+* Added `Pair` class
+* Addes `zip` function
+
 ## 1.0.6
 
 * Added `mapNotNull` function
