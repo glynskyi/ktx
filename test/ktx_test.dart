@@ -57,4 +57,17 @@ void main() {
     final mappedUsers = users.mapNotNull((user) => user.lastName.startsWith("G") ? user : null);
     expect(mappedUsers, [_User("Vladimir", "Glynskyi")]);
   });
+
+  test('calls `let` on Integer', () {
+    final a = 2;
+    final b = 3;
+    final c = a.let((it) => it * b);
+    expect(c, 6);
+  });
+
+  test('calls `let` on nullable object', () {
+    final String source = null;
+    final String target = source?.let((it) => it.length);
+    expect(target, null);
+  });
 }

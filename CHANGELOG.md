@@ -1,3 +1,7 @@
+## 1.0.8
+
+* Added `let` function
+
 ## 1.0.7
 
 * Added `Pair` class
