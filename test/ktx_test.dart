@@ -67,7 +67,7 @@ void main() {
 
   test('calls `let` on nullable object', () {
     final String source = null;
-    final String target = source?.let((it) => it.length);
+    final int target = source?.let((it) => it.length);
     expect(target, null);
   });
 }

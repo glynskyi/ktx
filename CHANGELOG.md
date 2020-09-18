@@ -1,3 +1,7 @@
+## 1.0.9
+
+* Added the generic argument for `let` function
+
 ## 1.0.8
 
 * Added `let` function
