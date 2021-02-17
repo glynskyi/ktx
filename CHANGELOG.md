@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Opted into the null safety
+
 ## 1.0.9
 
 * Added the generic argument for `let` function

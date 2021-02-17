@@ -50,8 +50,7 @@ extension ktx<T> on Iterable<T> {
   }
 
   /// Creates a descending comparator using the function to transform value to a [Comparable] instance for comparison.
-  Comparator<T> _compareByDescending<R extends Comparable>(
-      R Function(T) selector) {
+  Comparator<T> _compareByDescending<R extends Comparable>(R Function(T) selector) {
     return (T left, T right) {
       return selector(right).compareTo(selector(left));
     };
@@ -69,11 +68,10 @@ extension ktx<T> on Iterable<T> {
   /// applied to each element and puts to the [destination] map each group key associated with a list of corresponding elements.
   ///
   /// @return The [destination] map.
-  Map<K, List<T>> groupByTo<K>(
-      Map<K, List<T>> destination, K Function(T) keySelector) {
+  Map<K, List<T>> groupByTo<K>(Map<K, List<T>> destination, K Function(T) keySelector) {
     for (var element in this) {
       final key = keySelector(element);
-      List<T> list = destination[key];
+      List<T>? list = destination[key];
       if (list == null) {
         list = [];
         destination[key] = list;
@@ -107,7 +105,7 @@ extension ktx<T> on Iterable<T> {
   List<V> zip<R, V>(Iterable<R> other, V Function(T, R) transform) {
     final first = iterator;
     final second = other.iterator;
-    final list = List<V>();
+    final list = <V>[];
     while (first.moveNext() && second.moveNext()) {
       list.add(transform(first.current, second.current));
     }

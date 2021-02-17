@@ -10,10 +10,7 @@ class _User {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is _User &&
-          runtimeType == other.runtimeType &&
-          firstName == other.firstName &&
-          lastName == other.lastName;
+      other is _User && runtimeType == other.runtimeType && firstName == other.firstName && lastName == other.lastName;
 
   @override
   int get hashCode => firstName.hashCode ^ lastName.hashCode;
@@ -66,8 +63,8 @@ void main() {
   });
 
   test('calls `let` on nullable object', () {
-    final String source = null;
-    final int target = source?.let((it) => it.length);
+    final String? source = null;
+    final int? target = source?.let((it) => it.length);
     expect(target, null);
   });
 }

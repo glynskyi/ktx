@@ -1,6 +1,9 @@
 # KTX
 
 [![pub](https://img.shields.io/pub/v/ktx)](https://pub.dartlang.org/packages/ktx)
+[![build](https://travis-ci.com/glynskyi/ktx.svg?branch=main)](https://travis-ci.com/glynskyi/ktx)
+[![coverage](https://coveralls.io/repos/github/glynskyi/ktx/badge.svg?branch=main)](https://coveralls.io/github/glynskyi/ktx?branch=main)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 The KTX Library provides a comprehensive set of tools for managing collections – groups of a variable number of items (possibly zero)
 that share significance to the problem being solved and are operated upon commonly.

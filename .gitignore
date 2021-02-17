@@ -17,3 +17,4 @@
 
 # Dart related
 *.dart_tool
+pubspec.lock
