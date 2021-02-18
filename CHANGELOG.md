@@ -1,3 +1,7 @@
+## 1.1.4
+
+* Added `mapIndexed` function
+
 ## 1.1.3
 
 * Added the tests to cover Pair

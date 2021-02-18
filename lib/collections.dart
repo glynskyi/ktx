@@ -100,6 +100,26 @@ extension ktx<T> on Iterable<T> {
     return destination;
   }
 
+  /// Returns a list containing the results of applying the given [transform] function
+  /// to each element and its index in the original collection.
+  /// @param [transform] function that takes the index of an element and the element itself
+  /// and returns the result of the transform applied to the element.
+  List<R> mapIndexed<R>(R Function(int, T) transform) {
+    return mapIndexedTo([], transform);
+  }
+
+  /// Applies the given [transform] function to each element and its index in the original collection
+  /// and appends the results to the given [destination].
+  /// @param [transform] function that takes the index of an element and the element itself
+  /// and returns the result of the transform applied to the element.
+  List<R> mapIndexedTo<R>(List<R> destination, R Function(int, T) transform) {
+    var index = 0;
+    for (var item in this) {
+      destination.add(transform(index++, item));
+    }
+    return destination;
+  }
+
   /// Returns a list of values built from the elements of `this` collection and the [other] collection with the same index
   /// using the provided [transform] function applied to each pair of elements.
   /// The returned list has length of the shortest collection.

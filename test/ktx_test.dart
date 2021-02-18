@@ -98,6 +98,12 @@ void main() {
     expect(map[age1], "person1");
   });
 
+  test('transforms list with indexes', () {
+    final fruits = ["Apple", "Pear", "Orange"];
+    final indexedFruits = fruits.mapIndexed((index, fruit) => "${index + 1}: $fruit");
+    expect(indexedFruits, ["1: Apple", "2: Pear", "3: Orange"]);
+  });
+
   test('zips to lists into one', () {
     final kinds = ["Apple", "Pear", "Apricot"];
     final colors = ["Red", "Green", "Orange"];
