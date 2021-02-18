@@ -80,6 +80,24 @@ void main() {
     expect(age.second, null);
   });
 
+  test('compares two Pairs', () {
+    final age1 = Pair("age", 42);
+    final age2 = Pair("age", 42);
+    expect(age1, age2);
+  });
+
+  test('prints Pairs', () {
+    final age = Pair("age", 42);
+    expect(age.toString(), "(age, 42)");
+  });
+
+  test('uses map to store Pairs', () {
+    final age1 = Pair("age", 42);
+    final age2 = Pair("age", 48);
+    final map = {age1: "person1", age2: "person2"};
+    expect(map[age1], "person1");
+  });
+
   test('zips to lists into one', () {
     final kinds = ["Apple", "Pear", "Apricot"];
     final colors = ["Red", "Green", "Orange"];

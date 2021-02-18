@@ -1,3 +1,11 @@
+## 1.1.3
+
+* Added the tests to cover Pair
+
+## 1.1.2
+
+* Updated the Travis and Coveralls badges
+
 ## 1.1.1
 
 * Added the static analyzer rules
