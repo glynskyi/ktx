@@ -1,6 +1,6 @@
 name: ktx
 description: The KTX Library provides a comprehensive set of tools for managing collections.
-version: 1.1.0-nullsafety
+version: 1.1.1-nullsafety
 author: Dmytro Glynskyi <dmytro.glynskyi@gmail.com>
 homepage: https://github.com/glynskyi/ktx
 

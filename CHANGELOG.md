@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Added the static analyzer rules
+* Added the tests to cover null-safety
+
 ## 1.1.0
 
 * Opted into the null safety

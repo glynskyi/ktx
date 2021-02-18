@@ -1,19 +1,19 @@
 import 'package:ktx/ktx.dart';
 import 'package:test/test.dart';
 
-class _User {
-  final String firstName;
-  final String lastName;
+class _Fruit {
+  final String kind;
+  final String color;
 
-  _User(this.firstName, this.lastName);
+  _Fruit(this.kind, this.color);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is _User && runtimeType == other.runtimeType && firstName == other.firstName && lastName == other.lastName;
+      other is _Fruit && runtimeType == other.runtimeType && kind == other.kind && color == other.color;
 
   @override
-  int get hashCode => firstName.hashCode ^ lastName.hashCode;
+  int get hashCode => kind.hashCode ^ color.hashCode;
 }
 
 void main() {
@@ -42,29 +42,48 @@ void main() {
   });
 
   test('groups by first name', () {
-    final List<_User> users = [_User("Vladimir", "Glynskyi"), _User("Vladimir", "Zelenskyi")];
-    final groupedUsers = users.groupBy((user) => user.firstName);
-    expect(groupedUsers, {
-      "Vladimir": [_User("Vladimir", "Glynskyi"), _User("Vladimir", "Zelenskyi")]
+    final fruits = [_Fruit("Apple", "Pear"), _Fruit("Apple", "Red")];
+    final groupedFruits = fruits.groupBy((fruit) => fruit.kind);
+    expect(groupedFruits, {
+      "Apple": [_Fruit("Apple", "Pear"), _Fruit("Apple", "Red")]
     });
   });
 
   test('maps with nullable elements', () {
-    final List<_User> users = [_User("Vladimir", "Glynskyi"), _User("Vladimir", "Zelenskyi")];
-    final mappedUsers = users.mapNotNull((user) => user.lastName.startsWith("G") ? user : null);
-    expect(mappedUsers, [_User("Vladimir", "Glynskyi")]);
+    final fruits = [_Fruit("Pear", "Green"), _Fruit("Apple", "Red")];
+    final mappedFruits = fruits.mapNotNull((fruit) => fruit.color.startsWith("G") ? fruit : null);
+    expect(mappedFruits, [_Fruit("Pear", "Green")]);
   });
 
   test('calls `let` on Integer', () {
-    final a = 2;
-    final b = 3;
+    const a = 2;
+    const b = 3;
     final c = a.let((it) => it * b);
     expect(c, 6);
   });
 
   test('calls `let` on nullable object', () {
-    final String? source = null;
-    final int? target = source?.let((it) => it.length);
+    const String? source = null;
+    final target = source?.let((it) => it.length);
     expect(target, null);
+  });
+
+  test('uses Pair with none nullable values', () {
+    final age = Pair("age", 42);
+    expect(age.first, "age");
+    expect(age.second, 42);
+  });
+
+  test('uses Pair with nullable values', () {
+    final age = Pair("age", null);
+    expect(age.first, "age");
+    expect(age.second, null);
+  });
+
+  test('zips to lists into one', () {
+    final kinds = ["Apple", "Pear", "Apricot"];
+    final colors = ["Red", "Green", "Orange"];
+    final fruits = kinds.zip<String, _Fruit>(colors, (kind, color) => _Fruit(kind, color));
+    expect(fruits, [_Fruit("Apple", "Red"), _Fruit("Pear", "Green"), _Fruit("Apricot", "Orange")]);
   });
 }

@@ -1,5 +1,6 @@
 import 'dart:core';
 
+// ignore: camel_case_extensions
 extension ktx<T> on Iterable<T> {
   /// Returns a [Map] containing the values provided by [valueTransform] and indexed by [keySelector] functions applied to elements of the given collection.
   ///
@@ -25,14 +26,14 @@ extension ktx<T> on Iterable<T> {
   /// Sorts elements in the list in-place according to natural sort order of the value returned by specified [selector] function.
   ///
   /// The sort is _stable_. It means that equal elements preserve their order relative to each other after sorting.
-  List<T> sortBy<R extends Comparable>(R Function(T) selector) {
+  List<T> sortBy<R extends Comparable<Object>>(R Function(T) selector) {
     return sortTo([], _compareBy(selector));
   }
 
   /// Sorts elements in the list in-place descending according to natural sort order of the value returned by specified [selector] function.
   ///
   /// The sort is _stable_. It means that equal elements preserve their order relative to each other after sorting.
-  List<T> sortByDescending<R extends Comparable>(R Function(T) selector) {
+  List<T> sortByDescending<R extends Comparable<Object>>(R Function(T) selector) {
     return sortTo([], _compareByDescending(selector));
   }
 
@@ -43,14 +44,14 @@ extension ktx<T> on Iterable<T> {
   }
 
   /// Creates a comparator using the function to transform value to a [Comparable] instance for comparison.
-  Comparator<T> _compareBy<R extends Comparable>(R Function(T) selector) {
+  Comparator<T> _compareBy<R extends Comparable<Object>>(R Function(T) selector) {
     return (T left, T right) {
       return selector(left).compareTo(selector(right));
     };
   }
 
   /// Creates a descending comparator using the function to transform value to a [Comparable] instance for comparison.
-  Comparator<T> _compareByDescending<R extends Comparable>(R Function(T) selector) {
+  Comparator<T> _compareByDescending<R extends Comparable<Object>>(R Function(T) selector) {
     return (T left, T right) {
       return selector(right).compareTo(selector(left));
     };
@@ -71,7 +72,7 @@ extension ktx<T> on Iterable<T> {
   Map<K, List<T>> groupByTo<K>(Map<K, List<T>> destination, K Function(T) keySelector) {
     for (var element in this) {
       final key = keySelector(element);
-      List<T>? list = destination[key];
+      var list = destination[key];
       if (list == null) {
         list = [];
         destination[key] = list;
@@ -83,13 +84,13 @@ extension ktx<T> on Iterable<T> {
 
   /// Returns a list containing only the non-null results of applying the given [transform] function
   /// to each element in the original collection.
-  List<R> mapNotNull<R>(R Function(T) transform) {
+  List<R> mapNotNull<R>(R? Function(T) transform) {
     return mapNotNullTo([], transform);
   }
 
   /// Applies the given [transform] function to each element in the original collection
   /// and appends only the non-null results to the given [destination].
-  List<R> mapNotNullTo<R>(List<R> destination, R Function(T) transform) {
+  List<R> mapNotNullTo<R>(List<R> destination, R? Function(T) transform) {
     for (final item in this) {
       final result = transform(item);
       if (result != null) {
@@ -113,6 +114,7 @@ extension ktx<T> on Iterable<T> {
   }
 }
 
+// ignore: camel_case_extensions
 extension mapKtx<K, V> on Map<K, V> {
   /// Returns a list containing the results of applying the given [transform] function
   /// to each entry in the original map.
@@ -123,7 +125,7 @@ extension mapKtx<K, V> on Map<K, V> {
   /// Applies the given [transform] function to each entry of the original map
   /// and appends the results to the given [destination].
   List<R> mapToListTo<R>(List<R> destination, R Function(K, V) transform) {
-    for (var entry in this.entries) {
+    for (var entry in entries) {
       destination.add(transform(entry.key, entry.value));
     }
     return destination;
