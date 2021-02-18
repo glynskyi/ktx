@@ -1,3 +1,7 @@
+## 1.1.5
+
+* Fixed the pub badges
+
 ## 1.1.4
 
 * Added `mapIndexed` function
