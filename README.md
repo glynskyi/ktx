@@ -1,7 +1,7 @@
 # KTX
 
 [![pub](https://img.shields.io/pub/v/ktx)](https://pub.dartlang.org/packages/ktx)
-[![build](https://api.travis-ci.com/glynskyi/ktx.svg?branch=main)](https://travis-ci.com/glynskyi/ktx)
+[![build](https://api.travis-ci.com/glynskyi/ktx.svg?branch=master)](https://travis-ci.com/glynskyi/ktx)
 [![coverage](https://coveralls.io/repos/github/glynskyi/ktx/badge.svg?branch=master)](https://coveralls.io/github/glynskyi/ktx?branch=master)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
