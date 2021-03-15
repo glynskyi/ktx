@@ -110,4 +110,22 @@ void main() {
     final fruits = kinds.zip<String, _Fruit>(colors, (kind, color) => _Fruit(kind, color));
     expect(fruits, [_Fruit("Apple", "Red"), _Fruit("Pear", "Green"), _Fruit("Apricot", "Orange")]);
   });
+
+  test('sumBy on empty collection', () {
+    final fruits = <String>[];
+    final calories = fruits.sumBy((fruit) => fruit.length);
+    expect(calories, 0);
+  });
+
+  test('sumBy on collection with a single element', () {
+    final fruits = <String>["Apple"];
+    final calories = fruits.sumBy((fruit) => fruit.length);
+    expect(calories, 5);
+  });
+
+  test('sumBy on collection with a few elements', () {
+    final fruits = <String>["Apple", "Pear"];
+    final calories = fruits.sumBy((fruit) => fruit.length);
+    expect(calories, 9);
+  });
 }

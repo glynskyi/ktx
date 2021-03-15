@@ -1,3 +1,7 @@
+## 1.1.6
+
+* Added `sumBy` function
+
 ## 1.1.5
 
 * Fixed the pub badges

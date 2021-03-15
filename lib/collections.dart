@@ -100,6 +100,15 @@ extension ktx<T> on Iterable<T> {
     return destination;
   }
 
+  /// Returns the sum of all values produced by [selector] function applied to each element in the collection.
+  int sumBy(int Function(T) selector) {
+    var sum = 0;
+    for (final element in this) {
+      sum += selector(element);
+    }
+    return sum;
+  }
+
   /// Returns a list containing the results of applying the given [transform] function
   /// to each element and its index in the original collection.
   /// @param [transform] function that takes the index of an element and the element itself
